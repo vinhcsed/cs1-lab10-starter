@@ -1,4 +1,4 @@
-# CS1: Lab 9
+# CS1: Lab 10
 
 ## Setup
 1. Update the contents of *ID.txt* with your identifier (school email **without @school.edu**).
@@ -12,102 +12,178 @@
    - Open a Terminal. Type `make` and press return. Your program should compile and run.
 
 ## Assignment Specification
-### Jumbled Bag
+### String Cheese
 * Implement this program in `main.cpp`.
-* This program will simulate a bag containing capital letters A-Z.
-* When the program begins, the user should be prompted for the *size* of the bag.
-   - The program should **dynamically allocate** an array to represent the bag; the array has *size*+1 elements
-   - The last element of the array should be initialized to an asterisk `*` to represent the maximum capacity of the bag (no items should be added at or beyond this element)
-   - All other elements should be initialized to underscores `_` to represent empty spots
-* The program should display three menu options: 1) Add to Bag, 2) Remove from Bag, 3) Quit.
-   - If the user makes an invalid menu selection, they should be continuously prompted until they make a valid selection
-* When adding to the bag, the user should be prompted for a character. If the bag has space, the character should be “added” to the bag. Otherwise, the message `The bag is full!` should be displayed. Afterwards, the current contents of the bag should be printed to the terminal.
-   - If the user enters an invalid character, they should be continuously prompted until they enter a valid one
-* When removing from the bag, the user should be prompted for a character. If the character is not present in the bag, a message should be displayed in the format `{char} is not in the bag`. Otherwise, the earliest occurence of the character should be removed; Afterwards, the current contents of the bag should be printed to the terminal.
-   - If the user enters an invalid character, they should be continuously prompted until they enter a valid one
-* If the user chooses to quit, the program should immediately end.
+* The program initially prompts the user for a string
+   - This string may include spaces
+   - The input should be stored as a C-String
+   - The input string will have a maximum of 128 characters
+* The program should display a menu with several options:
+   - **Inverse String** - changes lowercase characters to uppercase and vice versa
+   - **Reverse String** - reverses the order of characters in the string
+   - **To Uppercase** - converts all alphabetic characters to uppercase
+   - **Count Consonants** - displays the number of consonant (non-vowel) characters in the string
+   - **Count Words** - displays the number of words in the string
+   - **Change String** - update the string 
+   - **Print** - displays the string
+   - **Quit** - terminate the program
+* After an option is selected, the corresponding operation should be performed and the program should print a short status message.
+* Note that Inverse String, Reverse String, To Uppercase, and Change String *do not output anything to the terminal*; they are directly modifying the string.
+* If the user selects an invalid menu option, they should be continuously prompted until a valid option is entered. Otherwise, the user may manipulate the string until they quit the program.
 
 ### Other Requirements
-* The bag array must be dynamically allocated to the specified size.
-* Aside from what is provided in the starter code, **the index operator `[]` is not allowed in this program**. Array operations should only use pointers.
+* The starter code provides exactly one C-String called *storage*. No other C-Strings should be declared in your program.
+* No additional libraries should be included other than those provided in the starter code. 
 * Your program logic must be organized into functions; you will be graded on code cleanliness and design.
 
 #### Example
 ```
-How big is the bag?: 3
+Enter a string: bun paTTy ketchup must4rD p1ckLes oni0n Lettuce chee5e t0Mato bun
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 4
-Invalid selection, please try again.
-Make a selection: 1
-Enter a character: g
-Invalid character, please try again.
-Enter a character: A
-Added {A} to the bag.
-[ A ]
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+5) Change String
+6) Print
+7) Quit
+Enter a choice: 99
+Invalid choice, please try again: 1
+String has been inverted.
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 1
-Enter a character: A
-Added {A} to the bag.
-[ A A ]
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 7
+BUN PAttY KETCHUP MUST4Rd P1CKlES ONI0N lETTUCE CHEE5E T0mATO BUN
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 1
-Enter a character: B
-Added {B} to the bag.
-[ A A B ]
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 2
+String has been reversed.
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 1
-Enter a character: B
-The bag is full!
-[ A A B ]
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 7
+NUB OTAm0T E5EEHC ECUTTEl N0INO SElKC1P dR4TSUM PUHCTEK YttAP NUB
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 2 
-Enter a character: C
-{C} is not in the bag.
-[ A A B ]
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 3
+String has been converted to uppercase.
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 2
-Enter a character: A
-Removed {A} from the bag.
-[ A B ]
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 7
+NUB OTAM0T E5EEHC ECUTTEL N0INO SELKC1P DR4TSUM PUHCTEK YTTAP NUB
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 1
-Enter a character: C
-Added {C} to the bag.
-[ A B C ]
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 2
-Enter a character: B
-Removed {B} from the bag.
-[ A C ]
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 4
+String has 34 consonants.
 
-1) Add to Bag
-2) Remove from Bag
-3) Quit
-Make a selection: 3
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 5
+String has 10 words.
+
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 6
+Enter a string: chum
+
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 7
+chum
+
+String Menu
+—------------------
+1) Inverse String
+2) Reverse String
+3) To Uppercase
+4) Count Consonants
+5) Count Words
+6) Change String
+7) Print
+8) Quit
+Enter a choice: 8
+
 ```
 
 ## Submission
