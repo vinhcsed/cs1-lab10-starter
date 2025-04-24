@@ -14,7 +14,7 @@
 ## Assignment Specification
 ### String Cheese
 * Implement this program in `main.cpp`.
-* The program initially prompts the user for a string
+* The program initially prompts the user for a string.
    - This string may include spaces
    - The input should be stored as a C-String
    - The input string will have a maximum of 128 characters
